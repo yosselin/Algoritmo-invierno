@@ -1,0 +1,30 @@
+//# Algoritmo-invierno
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main(){
+	float sb,sn;
+	int n,i;
+
+	cout<<"\nIntroduza la cantidad de empleados:";
+	cin>> n;
+	for(i=0;i<n;i++)
+	{
+		cout<<"Introduzca salario bruto: ";
+		cin>>sb;
+		if(sb>2960)
+			sn=(sb-((sb*0.13)-(sb*0.121)));
+		else
+			sn=(sb-(sb*0.121));
+		cout<<"Salario neto: "<<sn<<endl;
+
+	}
+
+	
+getch();
+}
