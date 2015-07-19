@@ -1,0 +1,28 @@
+#include"stdafx.h"
+#include<iostream>
+#include"conio.h"
+
+using namespace std;
+
+#define PI 3.141516;
+float Cilindro(float r, float h);	
+
+void main(){
+float ra,a,v;
+	cout <<"Ingrese el radio: ";
+	cin >>ra;
+	cout <<"Ingrese la altura: ";
+	cin >>a;
+	v=Cilindro(ra,a);
+	cout<<"El volumen del cilindro es:"<<v;
+
+getch();
+}
+
+float Cilindro(float r, float h)
+{
+	float V;
+	V=PI(r*r*h);
+
+	return V;
+}
