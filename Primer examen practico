@@ -1,0 +1,96 @@
+# Algoritmo-invierno
+
+#include "stdafx.h"
+#include "conio.h"
+#include "stdlib.h"
+#include <iostream>
+
+
+using namespace std;
+
+void triangulo();
+void Mayor();
+bool primo(int n);
+
+int main()
+{
+	int op;
+	do
+	{
+	
+		cout<<endl<<"******  MENU  *******"<<endl;
+		cout<<endl<<"1.- Area: ";
+		cout<<endl<<"2.- Mayor de 3 numeros: ";
+		cout<<endl<<"3:- Ver si es primo: ";
+		cout<<endl<<"0.- Salir:\n";
+		cout<<endl<<"Digite una opcion: \n";
+		cin>>op;
+		switch(op)
+		{
+			case 1: triangulo();
+				break;
+			case 2: Mayor();
+				break;
+			case 3: int n;
+					cout<<"Introduzca el numero: ";
+					cin>>n;
+					if(primo(n)==true)
+						cout<<"El numero es primo "<<endl;
+					else
+						cout<<"El numero no es primo"<<endl;
+				break;
+			default:
+				cout<<"Introduzca una opcion valida"<<endl;
+		getch();
+		system("cls");
+		}
+	}while(op!=0);
+return 0;
+}
+
+void triangulo()
+{
+	float b,h;
+	float A;
+		cout<<"Introducir la base: \n";
+		cin>>b;
+		cout<<"Introducir la altura :\n";
+		cin>>h;
+		A=(b*h)/2;
+		cout<<"El area del triangulo es: "<<A<<endl;
+		
+}
+
+void Mayor()
+{
+	float a,b,c;
+		cout<<"Introducir el primer numero: ";
+		cin>>a;
+		cout<<"Introducir el segundo numero: ";
+		cin>>b;
+		cout<<"Introdicr el tercer numero: ";
+		cin>>c;
+
+		if(a>b && a>c)
+			cout<<"\nEl mayor es: "<<a<<endl;
+		if(b>a && b>c)
+			cout<<"\nEl mayor es: "<<b<<endl;
+		if(c>a && c>b)
+			cout<<"\nEl mayor es: "<<c<<endl;
+		
+}
+
+bool primo(int n)
+{
+	int i;
+	bool k=true;
+		for(i=2;i<n-1;i++)
+		{
+			if(n%i==0)
+		    {
+				k=false;
+				n=i;
+			}
+		}
+	return(k);
+}
