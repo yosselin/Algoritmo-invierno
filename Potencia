@@ -1,0 +1,32 @@
+#include"stdafx.h"
+#include<iostream>
+#include"conio.h"
+
+using namespace std;
+
+#define PI 3.141516;
+
+int potencia(int a, int b);
+
+void main()
+{
+	int A,B,c;
+	cout<<"Ingrese la base: ";
+	cin>>A;
+	cout<<"Ingrese la potencia: ";
+	cin>>B;
+	c=potencia(A,B);
+	cout<<"El numero "<<A<<" potenica "<<B<<" es: "<<c;
+
+getch();
+}
+int potencia(int a, int b)
+{
+	int i=0,x=1;
+	while(i<b)
+	{
+		x=x*a;
+		i++;
+	}
+	return x;
+ }
