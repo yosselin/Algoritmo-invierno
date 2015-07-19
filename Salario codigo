@@ -1,0 +1,29 @@
+#include "stdafx.h"
+#include<iostream>
+#include"conio.h"
+
+using namespace std;
+
+void main(){
+	float sb,sn;
+	int codigo;
+
+	cout<<"\nIntroduzca el codigo:";
+	cin>>codigo;
+	while(codigo>-999)
+	{
+		cout<<"Introduzca salario bruto: ";
+		cin>>sb;
+		if(sb>2960)
+			sn=(sb-((sb*0.13)+(sb*0.121)));
+		else
+			sn=(sb-(sb*0.121));
+		cout<<"Salario neto: "<<sn<<endl;
+		cout<<"\nIntroduzca el codigo:";
+        cin>>codigo;
+		
+	}
+
+	
+getch();
+}
