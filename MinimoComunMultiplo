@@ -1,0 +1,34 @@
+#include"stdafx.h"
+#include<iostream>
+#include"conio.h"
+
+using namespace std;
+int mcm(int a, int b);
+
+void main()
+{
+	int n,m;
+	
+	cout<<"Introuzca el primer numero: ";
+    cin>>n;
+	cout<<"Introduzca el segundo numero: ";
+	cin>>m;
+	int C= mcm(n,m);
+	cout<<"El mcm es: "<<C;
+	
+	getch();
+
+}
+int mcm(int a, int b){
+int mayor,m;
+	if(a>b)
+		mayor=a;
+	else{
+		mayor=b;
+	}
+	m=mayor;
+	while((m%a!=0) || (m%b!=0)){
+			m=m+1;
+	}
+	return (m);
+}
