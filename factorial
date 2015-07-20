@@ -1,0 +1,24 @@
+#include"stdafx.h"
+#include"conio.h"
+#include<iostream>
+
+using namespace std;
+int factorial(int f);
+
+void main()
+{
+	int fac,f;
+	cout<<"Introduzca el numero que quiere sacar su factorial: ";
+	cin>>f;
+	fac=factorial(f);
+	
+	cout<<"El factorial de "<<f<<" es: "<<fac;
+getch();
+}
+int factorial(int f){
+int i,c=1;	
+	for(i=1;i<=f;i++){
+		c=c*i;
+	}
+	return (c);
+}
