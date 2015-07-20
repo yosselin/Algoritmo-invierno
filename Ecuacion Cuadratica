@@ -1,0 +1,39 @@
+#include"stdafx.h"
+#include"conio.h"
+#include<iostream>
+#include "math.h"
+
+using namespace std;
+
+void Cuadratica(int &a, int &b,int &c);
+
+void main(){
+ int a,b,c;
+	do{
+		cout<<"Introduzca a: ";
+		cin>>a;
+	}while(a==0);
+		cout<<"Introduzca b: ";
+		cin>>b;
+		cout<<"Introduzca c: ";
+		cin>>c;
+		Cuadratica(a,b,c);
+getch();
+}
+void Cuadratica(int &a, int &b,int &c){
+float M,x1,x2,p;
+	M=(b*b)- (4 *a*c);
+	if(M>0){
+		x1=(-b+sqrt(M))/(2*a);
+		x2=(-b-sqrt(M))/(2*a);
+		cout<<" X1 "<<x1<<endl;
+		cout<<" X2 "<<x2<<endl;
+	}
+	if(M<0)
+		cout<<"Raiz imaginaria";
+	if(M==0){
+	    p=(-b/(2*a));
+		cout<<" X1,2 "<<p;
+	}
+	
+} 
