@@ -1,0 +1,36 @@
+#include"stdafx.h"
+#include"conio.h"
+#include<iostream>
+
+using namespace std;
+int factorial(int f);
+float combi(float a, float b);
+void main()
+{
+	float a,b,c;
+	do{
+		cout<<"Introduzca el primer numero: ";
+		cin>>a;
+	 }while(a<=0);
+	do{	
+		cout<<"Introduzca el segundo numero: ";
+		cin>>b;
+	}while(b<=0);
+	c=combi(a,b);
+	cout<<"El numero cobinatorio es: "<<c;
+
+getch();
+}
+
+int factorial(int f){
+int i,c=1;	
+	for(i=1;i<=f;i++){
+		c=c*i;
+	}
+	return (c);
+}
+float combi(float a, float b){
+float c;
+	c=(factorial(a)/(factorial(b)*factorial(a-b)));
+	return (c);
+}
