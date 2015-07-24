@@ -1,0 +1,35 @@
+#include "stdafx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+
+using namespace std;
+bool palindromo(string cad);
+void main(){
+string cad;
+	cout<<"**** Ver si es Palindromo****"<<endl;
+	cout<<"    Ingrese una palabra   "<<endl;
+	getline(cin,cad);
+	if(palindromo(cad)==true)
+		cout<<"La palabra es palindromo ";
+	else
+		cout<<"La palabra no es palindromo ";
+	getch();
+}
+
+bool palindromo(string cad){
+int tam,i;
+bool k=false;
+tam=cad.length();
+string p;
+p=cad;
+	for(i=0;i<tam/2;i++){
+		if(cad[i]==p[tam-1-i])
+			k=true;
+		else{
+			k=false;
+			i=tam;
+		}
+	}
+	return k;
+}
