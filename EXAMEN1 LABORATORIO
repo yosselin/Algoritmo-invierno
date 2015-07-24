@@ -1,0 +1,128 @@
+#include "stdafx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+
+#define Fila 10
+#define col 10
+
+using namespace std;
+
+void cargar(float mat[Fila][col],int n);
+void mostrar(float mat[Fila][col],int n);
+void Promedio(float mat[Fila][col],int n);
+void cargar(int v[],int n);
+void mostrarPlanilla(int v[],int n);
+int MCD(int a, int b);
+
+void main(){
+int op,n,v[30];
+float mat[Fila][col];
+	do{
+		cout<<endl<<"*****  MENU   *****";
+		cout<<endl<<"1.- Sacar el promedio de la diagonal: ";
+		cout<<endl<<"2.- Sacar el MCM: ";
+		cout<<endl<<"3.- Planilla de examenes: ";
+		cout<<endl<<"0.- Salir: ";
+		cout<<endl<<"Ingrese una opcion: ";
+		cin>>op;
+		switch(op){
+			case 1:cout<<"Ingrese la dimension de la matriz: ";
+				cin>>n;
+				cargar(mat,n);
+				mostrar(mat,n);
+				Promedio(mat,n);
+				system("pause");
+				break;
+			case 2:int a,b,c;
+				cout<<"Ingrese el primer numero: ";
+				cin>>a;
+				cout<<"Ingrese el segundo numero: ";
+				cin>>b;
+				c=MCD(a,b);
+				cout<<"El MCD es: "<<c<<endl;
+				system("pause");
+				break;
+			case 3:
+				cout<<"Ingres la cantidad de estudiantes: ";
+				cin>>n;
+				cout<<endl;
+				cargar(v,n);
+				mostrarPlanilla(v,n);
+				system("pause");
+				break;
+		default:
+			cout<<"Ingrese una opcion valida ";
+		}
+		system("cls");
+	}while(op!=0);
+
+}
+void cargar(float mat[Fila][col],int n){
+int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cout<<"M["<<i<<"]["<<j<<"] ";
+			cin>>mat[i][j];
+		}
+	}
+}
+void mostrar(float mat[Fila][col],int n){
+int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cout<<mat[i][j]<<"  ";
+		}
+		cout<<endl;
+	}
+}
+void Promedio(float mat[Fila][col],int n){
+int i,j;
+float s=0;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(i==j)
+				s=s+mat[i][j];
+		}
+	}
+	cout<<"El promedio es: "<<s/n;
+}
+int MCD(int a, int b)
+{
+	while(a!=b)
+	{
+		if(a>b)
+			a=a-b;
+		if(b>a)
+			b=b-a;
+	
+	}
+	return a;
+}
+
+void cargar(int v[],int n){
+int i,n1,n2,n3,nfinal,s;
+float nf;
+	for(i=0;i<n;i++){
+		cout<<"Ingrese la primer nota ";
+		cin>>n1;
+		cout<<"Ingrese la segunda nota ";
+		cin>>n2;
+		cout<<"Ingrese la tercer nota ";
+		cin>>n3;
+		cout<<"Ingrese la nota final ";
+		cin>>nfinal;
+		s=n1+n2+n3;
+		nf=(s*0.2)+(nfinal*0.4);
+		v[i]=nf;
+		cout<<endl;
+	}
+}
+void mostrarPlanilla(int v[],int n){
+int i;
+	cout<<"  PLANILLA DE EXAMENES  "<<endl;
+	cout<<"ALUMNO        NOTA"<<endl;
+	for(i=0;i<n;i++){
+		cout<<i+1<<".-            "<<v[i]<<endl;
+	}
+}
