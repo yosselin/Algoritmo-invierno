@@ -1,0 +1,97 @@
+#include"stdafx.h"
+#include<conio.h>
+#include<iostream>
+#include<stdio.h>
+#include<string>
+
+using namespace std;
+struct regLibro{
+	char nombre[20];
+	char autor[20];
+	char editorial[20];
+	int anio;
+	int npag;
+
+};
+void Adicionar(char nomLibreria[]);
+void cargar();
+void listado();
+
+void main(){
+int op;
+	do{
+		cout<<endl<<"********* MENU  ********"<<endl;
+		cout<<endl<<"1.-Adicionar ";
+		cout<<endl<<"2.-Cargar ";
+		cout<<endl<<"3.-Listado ";
+		cin>>op;
+		switch(op){
+			case 1:Adicionar("libro.dat");
+				system("cls");
+				break;
+			case 2:cargar();
+				system("cls");
+				break;
+			case 3:listado();
+				system("pause");
+				break;
+			default:cout<<"Ingrese una opcion valida: ";
+		}
+	
+	}while(op!=0);
+}
+void Adicionar(char nomLibreria[]){
+FILE *ptr;
+ptr=fopen(nomLibreria,"wb");
+fclose(ptr);
+}
+void cargar(){
+FILE *ptr;
+regLibro reg;
+	cout<<"Ingrese nombre ";
+	do{
+		gets(reg.nombre);
+	}while(strlen(reg.nombre)==0);
+	
+	cout<<"Autor ";
+	do{
+		gets(reg.autor);
+	}while(strlen(reg.autor)==0);
+	
+	cout<<"Editorial ";
+	do{
+		gets(reg.editorial);
+	}while(strlen(reg.editorial)==0);
+	
+	do{
+	cout<<"Anio ";
+	cin>>reg.anio;
+	}while(reg.anio<1800 || reg.anio>2016);
+	
+	do{
+	cout<<"Nro de paginas ";
+	cin>>reg.npag;
+	}while(reg.npag<=0 || reg.npag>10000);
+
+	ptr=fopen("libro.dat","ab");
+	fwrite(&reg,sizeof(reg),1,ptr);
+	fclose(ptr);
+
+}
+void listado(){
+FILE *ptr;
+regLibro reg;
+ptr=fopen("libro.dat","rb");
+	if(ptr!=NULL){
+	cout<<endl<<"       LISTADO         "<<endl<<endl;
+	cout<<"NOMBRE      AUTOR     EDITORIAL      ANIO      NRO DE PAGINAS";
+	fread(&reg,sizeof(reg),1,ptr);
+		while(feof(ptr)==false){
+		cout<<endl<<reg.nombre<<"\t "<<reg.autor<<" \t"<<reg.editorial<<" \t "<<reg.anio<<"\t"<<reg.npag;
+		fread(&reg,sizeof(reg),1,ptr);
+		}
+		fclose(ptr);
+	} 
+	else
+		cout<<"Archivo no existe... !!!";
+}
