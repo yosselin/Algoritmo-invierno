@@ -1,0 +1,83 @@
+#include "stdafx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sstream>
+#include <iomanip>
+
+#define IVA 0.13
+#define AFP 0.121
+#define MAX	100
+
+using namespace std;
+
+
+struct tipoEmpleado{
+	int cod;
+	float afp;
+	float iva;
+	float Salariobruto;
+	float Salarioneto;
+	string nombre;
+	string apellido;
+	string fechainicial;
+	string fechafinal;
+
+};
+
+void cargar(tipoEmpleado v[],int n);
+void salarioneto(tipoEmpleado v[],int n);
+void mostrarplanilla(tipoEmpleado v[],int n);
+
+void main(){
+tipoEmpleado emp[MAX];
+int n;
+	cout<<"Ingrese la cantidad de empleados ";
+	do{
+	cin>>n;
+	}while(n<=0||n>MAX);
+	cargar(emp,n);
+	salarioneto(emp,n);
+	mostrarplanilla(emp,n);
+
+	getch();
+}
+
+void cargar(tipoEmpleado v[],int n){
+int i;
+	for(i=0;i<n;i++){
+		cout<<"Ingrese su codigo: ";
+		cin>>v[i].cod;
+		cout<<"Ingres su nombre: ";
+		cin.ignore();
+		getline(cin,v[i].nombre);
+		cout<<"Ingres su apellido: ";
+		getline(cin,v[i].apellido);
+		cout<<"Ingrese su salario: ";
+		cin>>v[i].Salariobruto;
+		cout<<"Ingrese la fecha: ";
+		cin>>v[i].fechainicial;
+		cout<<endl;
+	}
+}
+void salarioneto(tipoEmpleado v[],int n){
+int i;
+	for(i=0;i<n;i++){
+		if(v[i].Salariobruto > 2960)
+			v[i].iva = v[i].Salariobruto*IVA;
+		else
+			v[i].iva=0;
+	v[i].afp=v[i].Salariobruto*AFP;
+	v[i].Salarioneto = v[i].Salariobruto-(v[i].iva+v[i].afp);
+	}
+}
+void mostrarplanilla(tipoEmpleado v[],int n){
+float s=0;
+	cout<<"**********     PLANILLA DE SUELDOS  ***********************"<<endl;
+	cout<<"Codigo\t Nombre\t  Apellido\tSalario neto\tfecha "<<endl<<endl;
+	for(int i=0;i<n;i++){
+		cout<<endl<<v[i].cod<<setw(13)<<v[i].nombre<<setw(12)<<v[i].apellido<<setw(13)<<v[i].Salarioneto<<setw(16)<<v[i].fechainicial;
+	}
+}
