@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iomanip>
 
+
 #define IVA 0.13
 #define AFP 0.121
 #define MAX	100
@@ -19,7 +20,7 @@ struct tipoEmpleado{
 	float afp;
 	float iva;
 	float Salariobruto;
-	float Salarioneto;
+	float SalarioNeto;
 	string nombre;
 	string apellido;
 	string fechainicial;
@@ -30,6 +31,7 @@ struct tipoEmpleado{
 void cargar(tipoEmpleado v[],int n);
 void salarioneto(tipoEmpleado v[],int n);
 void mostrarplanilla(tipoEmpleado v[],int n);
+
 
 void main(){
 tipoEmpleado emp[MAX];
@@ -70,14 +72,16 @@ int i;
 		else
 			v[i].iva=0;
 	v[i].afp=v[i].Salariobruto*AFP;
-	v[i].Salarioneto = v[i].Salariobruto-(v[i].iva+v[i].afp);
+	v[i].SalarioNeto = v[i].Salariobruto-(v[i].iva+v[i].afp);
 	}
 }
 void mostrarplanilla(tipoEmpleado v[],int n){
 float s=0;
 	cout<<"**********     PLANILLA DE SUELDOS  ***********************"<<endl;
-	cout<<"Codigo\t Nombre\t  Apellido\tSalario neto\tfecha "<<endl<<endl;
+	cout<<"Codigo\t  Nombre\t  Apellido\tSalario neto\tfecha "<<endl<<endl;
 	for(int i=0;i<n;i++){
-		cout<<endl<<v[i].cod<<setw(13)<<v[i].nombre<<setw(12)<<v[i].apellido<<setw(13)<<v[i].Salarioneto<<setw(16)<<v[i].fechainicial;
+		cout<<endl<<v[i].cod<<setw(13)<<v[i].nombre<<setw(12)<<v[i].apellido<<setw(13)<<v[i].SalarioNeto<<setw(16)<<v[i].fechainicial<<endl;
+		s=s+v[i].SalarioNeto;
 	}
+	cout<<endl<<endl<<"El promedio de los salarios es: "<<s/n;
 }
